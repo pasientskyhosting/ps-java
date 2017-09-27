@@ -11,6 +11,11 @@ RUN ln -s /usr/local/java/bin/java /bin/java && \
 
 ADD conf/supervisord.conf /etc/supervisord.conf
 
+RUN mkdir -p /data
+COPY newrelic.jar /data
+COPY newrelic.yml /data
+COPY service.jar /data
+
 ADD scripts/start.sh /start.sh
 RUN chmod 755 /start.sh
 
